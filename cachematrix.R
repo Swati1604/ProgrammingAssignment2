@@ -1,7 +1,16 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Matrix inversion is usually a costly computation and there may be some benefit to caching the inverse of a matrix
+## The following two functions are used to cache the inverse of a matrix.
+## The first function makeCacheMatrix initializes the inverse. A list is created with the matrix and the inverse
+## The second function cacheSolve calculates the inverse of the matrix if it hasn;t been computed, else returns the cached inverse of the matrix
 
-## This function defines getter and setter functions for the matrix and inverrse matrix objects
+
+## ----------------------------------------------------------------------------##
+## makeCacheMatrix creates a list containing a function for the following:
+# -> set the value of the matrix
+# -> get the value of the matrix
+# -> set the value of inverse of the matrix
+# -> get the value of inverse of the matrix
+##---------------------------------------------------------------------------------------------------------##
 
 makeCacheMatrix <- function(x = matrix()) {
 
@@ -28,8 +37,12 @@ makeCacheMatrix <- function(x = matrix()) {
        getInverse = getInverse)
 }
 
-
-## CacheSolve() populates and/or retrieves the inverse from an object of type makeCacheMatrix().
+##---------------------------------------------------------------------------------------------------------##
+## CacheSolve() returns the inverse of the matrix.
+## It first checks if the inverse has already been computed. If yes, then the function gets the result and does not perform any computation.
+## However, if the inverse hasn't been calculated, it will computes the inverse and then set the value in the cache via setInverse function.
+## Also this function assumes that the inverse of the matrix exists.
+##---------------------------------------------------------------------------------------------------------##
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
